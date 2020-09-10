@@ -34,13 +34,15 @@ if __name__ == "__main__":
     import timeit
     import functools
 
-    in_list = [1, 3, 2, 4, 5, 2]
+    # in_list = [1, 3, 2, 4, 5, 2]
+    in_list = [i for i in range(1000)]
+    in_list.append(1)
 
     t = timeit.Timer(functools.partial(find_duplicate_v1, in_list))
-    print(t.timeit(10**5))
+    print(t.timeit(10**2))
 
     t = timeit.Timer(functools.partial(find_duplicate_v2, in_list))
-    print(t.timeit(10**5))
+    print(t.timeit(10**2))
 
     t = timeit.Timer(functools.partial(find_duplicate_v3, in_list))
-    print(t.timeit(10**5))
+    print(t.timeit(10**2))
