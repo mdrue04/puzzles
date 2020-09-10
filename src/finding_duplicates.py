@@ -31,5 +31,16 @@ def find_duplicate_v3(in_list):
 
 
 if __name__ == "__main__":
+    import timeit
+    import functools
+
     in_list = [1, 3, 2, 4, 5, 2]
-    print(find_duplicate_v3(in_list))
+
+    t = timeit.Timer(functools.partial(find_duplicate_v1, in_list))
+    print(t.timeit(10**5))
+
+    t = timeit.Timer(functools.partial(find_duplicate_v2, in_list))
+    print(t.timeit(10**5))
+
+    t = timeit.Timer(functools.partial(find_duplicate_v3, in_list))
+    print(t.timeit(10**5))
