@@ -7,7 +7,7 @@ class ClusterFinder():
         self.cluster_fields = None
         self.current_cluster_idx = 1
 
-    def _get_neighbour_fields(self, i, j):
+    def _get_neighbour_fields(self, field):
         i = field[0]
         j = field[1]
         neighbour_fields = []
@@ -35,8 +35,8 @@ class ClusterFinder():
 
     def find_cluster(self):
         for i, j in np.ndindex(self.matrix.shape):
-            field_must_be_added_to_cluster = (self.matrix[i, j] < 0)
-            if field_must_be_added_to_cluster:
+            field_starts_a_new_cluster = (self.matrix[i, j] < 0)
+            if field_starts_a_new_cluster:
                 self._fill_cluster_from_here((i, j))
                 self.current_cluster_idx += 1
         return self.matrix
