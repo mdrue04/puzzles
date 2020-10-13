@@ -1,9 +1,17 @@
+# You are given a matrix where each field is filled with 0 or 1. The 1s
+# form islands. Each island is defined as all connected 1s where a
+# diagonal connection is not possible. You have to find the islands and
+# fill each field of each island with the number of the island. The
+# numbering of the islands is defined by ordering the islands by which
+# island has one element furthest to the top left counting from 1, 2, 3,
+# ....
+
 import numpy as np
 
 
 class ClusterFinder():
     def __init__(self, in_matrix):
-        self.matrix = in_matrix*(-1)
+        self.matrix = in_matrix * (-1)
         self.cluster_fields = None
         self.current_cluster_idx = 1
 
@@ -44,11 +52,11 @@ class ClusterFinder():
 
 if __name__ == "__main__":
     in_matrix = np.matrix(
-        [[1, 0, 0, 1, 1, 1],
-         [0, 0, 0, 1, 0, 1],
-         [1, 1, 0, 1, 1, 1],
+        [[1, 0, 1, 0, 1, 1],
+         [1, 0, 1, 1, 0, 1],
+         [1, 1, 1, 0, 1, 1],
          [0, 0, 0, 0, 0, 0],
-         [0, 0, 0, 1, 1, 0]],
+         [1, 0, 0, 1, 1, 0]],
         np.int32
     )
 
