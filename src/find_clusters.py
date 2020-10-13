@@ -7,16 +7,18 @@ class ClusterFinder():
         self.cluster_fields = None
         self.current_cluster_idx = 1
 
-    def _get_neighbour_fields(self, field):
+    def _get_neighbour_fields(self, i, j):
+        i = field[0]
+        j = field[1]
         neighbour_fields = []
-        if field[0] - 1 >= 0:
-            neighbour_fields.append((field[0] - 1, field[1]))
-        if field[0] + 1 < self.matrix.shape[0]:
-            neighbour_fields.append((field[0] + 1, field[1]))
-        if field[1] - 1 >= 0:
-            neighbour_fields.append((field[0], field[1] - 1))
-        if field[1] + 1 < self.matrix.shape[1]:
-            neighbour_fields.append((field[0], field[1] + 1))
+        if i - 1 >= 0:
+            neighbour_fields.append((i - 1, j))
+        if i + 1 < self.matrix.shape[0]:
+            neighbour_fields.append((i + 1, j))
+        if j - 1 >= 0:
+            neighbour_fields.append((i, j - 1))
+        if j + 1 < self.matrix.shape[1]:
+            neighbour_fields.append((i, j + 1))
         return neighbour_fields
 
     def _handle_cluster_field(self, field):
